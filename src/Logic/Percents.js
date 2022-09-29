@@ -8,10 +8,6 @@ export function getPercents(arr) {
     })
 
     return arr.map(val => {
-        if(val.value === 0) {
-            return ((val.value + sum[sum.length - 1] / 70) * 100) / sum[sum.length - 1]
-        } else {
-            return (val.value * 100) / sum[sum.length - 1]
-        }
+        return (val.value * 100) / sum[sum.length - 1]
     })
 }

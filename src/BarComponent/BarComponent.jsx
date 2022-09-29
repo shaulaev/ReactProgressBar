@@ -13,11 +13,19 @@ const BarComponent = () => {
 
     const percents = data && getPercents(data)
 
+    const newPerc = percents.map(item => {
+        if(item === 0) {
+           item = 1
+        }
+
+        return item
+    })
+
     const cells = []
 
     function getCells () {
-        for(let n = 0; n < percents.length; n++) {
-            for (let i = 0; i < Math.round(percents[n]); i++) {
+        for(let n = 0; n < newPerc.length; n++) {
+            for (let i = 0; i < Math.round(newPerc[n]); i++) {
                 cells.push(<div key={Math.random()} className="barCell" style={{backgroundColor: data[n].color}}/>)
             }
         }
