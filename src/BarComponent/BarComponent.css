@@ -1,0 +1,46 @@
+.bar {
+    width: 900px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 10;
+    border-radius: 8px;
+    background-color: #efefef;
+}
+
+.barLine {
+    display: flex;
+    width: 100%;
+    gap: 3px;
+}
+
+.barCell {
+    width: 8px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: red;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.data, .dataTypes {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dataTypes {
+    justify-content: unset;
+}
+
+.dataSphere {
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%
+}
