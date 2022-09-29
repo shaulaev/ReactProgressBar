@@ -5,21 +5,25 @@ import "./BarComponent.css"
 const BarComponent = () => {
 
     const [data] = useState([
-        {name: 'Sold', color: '#BD1FBE', value: 100},
-        {name: 'Got free', color: '#FC64FF', value: 250},
-        {name: 'Burned', color: '#940101', value: 20},
-        {name: 'Nice', color: '#439401', value: 0},
+        {name: 'Sold', color: '#BD1FBE', value: 677},
+        {name: 'Got free', color: '#FC64FF', value: 0},
+        {name: 'Burned', color: '#b71515', value: 200},
+        {name: 'Nice', color: '#5cc046', value: 50},
     ])
 
-    const percents = getPercents(data)
+    const percents = data && getPercents(data)
 
     const cells = []
 
-    for(let n = 0; n < percents.length; n++) {
-        for (let i = 0; i < Math.round(percents[n]); i++) {
-            cells.push(<div className="barCell" style={{backgroundColor: data[n].color}}/>)
+    function getCells () {
+        for(let n = 0; n < percents.length; n++) {
+            for (let i = 0; i < Math.round(percents[n]); i++) {
+                cells.push(<div key={Math.random()} className="barCell" style={{backgroundColor: data[n].color}}/>)
+            }
         }
     }
+
+    data && getCells()
 
     return (
         <div className="main">
@@ -28,12 +32,13 @@ const BarComponent = () => {
                     {cells}
                 </div>
                 <div className="data">
-                    {data.map((item, index) => {
-                        return (<div className="dataTypes">
+                    {data ? data.map((item, index) => {
+                        return (
+                        <div className="dataTypes" key={index + 1}>
                             <div className="dataSphere" style={{backgroundColor: item.color }}/>
                             <p className="dataName">{item.name}: {item.value} ({percents[index].toFixed(1)}%)</p>
                         </div>)
-                    })}
+                    }) : <h1>No data</h1>}
                 </div>
             </div>
         </div>
